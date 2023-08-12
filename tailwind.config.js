@@ -42,7 +42,7 @@ export default {
         590: '590px',
       },
       backgroundImage: {
-        'hero-pattern': "url('./src/data/img6.jpg')"
+        'hero-pattern': "url('https://media.discordapp.net/attachments/1116447256929898559/1139868786917380126/img6.jpg?width=1177&height=662')"
       },
     },
   },
