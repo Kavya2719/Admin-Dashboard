@@ -1,9 +1,69 @@
-import React from 'react'
+import React from "react";
+import {
+  ChartComponent,
+  SeriesCollectionDirective,
+  SeriesDirective,
+  Inject,
+  Legend,
+  Category,
+  Tooltip,
+  ColumnSeries,
+  RangeColorSettingsDirective,
+  RangeColorSettingDirective,
+} from "@syncfusion/ej2-react-charts";
+import {
+  rangeColorMapping,
+  colorMappingData,
+  ColorMappingPrimaryXAxis,
+  ColorMappingPrimaryYAxis,
+} from "../../data/dummy";
+import { useStateContext } from "../../contexts/ContextProvider";
+import { Header } from "../../components";
 
-const ColorMapping = () => {
+const Bar = () => {
+  const { currentMode } = useStateContext();
+
   return (
-    <div>ColorMapping</div>
-  )
-}
+    <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+      <Header
+        category="Color Mappping"
+        title="USA CLIMATE - WEATHER BY MONTH"
+        dark={true}
+      />
+      <div className="w-full">
+        <ChartComponent
+          id="charts"
+          height="420px"
+          primaryXAxis={ColorMappingPrimaryXAxis}
+          primaryYAxis={ColorMappingPrimaryYAxis}
+          chartArea={{ border: { width: 0 } }}
+          background={currentMode === "Dark" ? "#33373E" : "#fff"}
+          tooltip={{ enable: true }}
+          legendSettings={{ mode: "Range", background: "white" }}
+        >
+          <Inject services={[ColumnSeries, Legend, Category, Tooltip]} />
+          <SeriesCollectionDirective>
+            <SeriesDirective
+              dataSource={colorMappingData[0]}
+              xName="x"
+              yName="y"
+              name="USA"
+              type="Column"
+              cornerRadius={{
+                topLeft: 10,
+                topRight: 10,
+              }}
+            />
+          </SeriesCollectionDirective>
+          <RangeColorSettingsDirective>
+            {rangeColorMapping.map((item, index) => (
+              <RangeColorSettingDirective key={index} {...item} />
+            ))}
+          </RangeColorSettingsDirective>
+        </ChartComponent>
+      </div>
+    </div>
+  );
+};
 
-export default ColorMapping
+export default Bar;

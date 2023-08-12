@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import { bgImage } from './src/data/img.jpg'
+ 
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
@@ -40,8 +42,7 @@ export default {
         590: '590px',
       },
       backgroundImage: {
-        'hero-pattern':
-          "url('https://i.ibb.co/MkvLDfb/Rectangle-4389.png')",
+        'hero-pattern': "url('./src/data/img6.png')"
       },
     },
   },

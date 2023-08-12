@@ -21,7 +21,7 @@ const Area = () => {
 
   return (
     <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
-      <Header category="Area" title="Inflation Rate in Percentage" />
+      <Header category="Area" title="Inflation Rate in Percentage" dark={true} />
       <div className="w-full">
         <ChartComponent
           id="charts"
@@ -29,6 +29,7 @@ const Area = () => {
           primaryXAxis={areaPrimaryXAxis}
           primaryYAxis={areaPrimaryYAxis}
           chartArea={{ border: { width: 0 } }}
+          legendSettings={{ textStyle: { color: (currentMode === 'Dark'? 'white': '') }}}
           background={currentMode === "Dark" ? "#33373E" : "#fff"}
         >
           <Inject services={[SplineAreaSeries, DateTime, Legend]} />
